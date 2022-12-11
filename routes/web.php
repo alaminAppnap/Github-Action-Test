@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $users = User::all();
+
     $users->toArray();
 
     return view('welcome', compact('users'));
