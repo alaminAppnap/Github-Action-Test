@@ -21,3 +21,9 @@ Route::get('/', function () {
 
     return view('welcome', compact('users'));
 });
+
+Route::get('/test', function () {
+    $users = User::all();
+    $users->toArray();
+    return view('welcome', compact('users'));
+});
