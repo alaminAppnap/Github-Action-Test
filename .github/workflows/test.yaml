@@ -1,0 +1,25 @@
+name: Deploy amarpet application
+on:
+  push:
+    tags:
+      - "v*.*.*-RC.*"
+      - "v*.*.*"
+
+jobs:
+  build:
+    name: Deployment process
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute deployment
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, '-RC')
+        run: |
+          # Staging deployment steps
+          echo "Deploying to staging..."
+          # Add your staging deployment steps here
+
+      - name: Execute production deployment
+        if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-RC')
+        run: |
+          # Production deployment steps
+          echo "Deploying to production..."
+          # Add your production deployment steps here
