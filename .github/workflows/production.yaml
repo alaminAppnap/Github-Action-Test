@@ -3,8 +3,7 @@ on:
   push:
     tags:
       - "v*.*.*"
-    branches-ignore:   
-      - 'v*.*.-*RC.*'
+      - '!v*.*.-*RC.*'
 jobs:
   build:
     name: Deployment process
