@@ -1,0 +1,16 @@
+name: Production application
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    name: Deployment process
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute production deployment
+        run: |
+          # Production deployment steps
+          echo "Deploying to production..."
+          # Add your production deployment steps here
