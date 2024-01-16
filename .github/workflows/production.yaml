@@ -2,8 +2,7 @@ name: Production application
 on:
   push:
     tags:
-      - "v*.*.*"
-      - '!v*.*.-*RC.*'
+      - "v*.*.*!-RC"
 jobs:
   build:
     name: Deployment process
