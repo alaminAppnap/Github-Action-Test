@@ -1,8 +1,8 @@
 name: staging application
-on:
-  push:
-    tags:
-      - "v*.*.*-RC.*"
+# on:
+#   push:
+#     tags:
+#       - "v*.*.*-RC.*"
 
 jobs:
   build:
