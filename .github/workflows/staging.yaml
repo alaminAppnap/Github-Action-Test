@@ -12,5 +12,5 @@ jobs:
       - name: Execute deployment
         run: |
           # Staging deployment steps
-          echo "Deploying to staging..."
+          echo "Deploying to stagingg..."
           # Add your staging deployment steps here
