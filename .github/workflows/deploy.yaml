@@ -1,1 +1,24 @@
+name: Application Deployment
 
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check tag format
+        run: |
+          tag_name="${{ github.ref }}"
+          if [[ $tag_name =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Running production.yaml for tag: $tag_name"
+           
+          elif [[ $tag_name =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+-RC\.[0-9]+$ ]]; then
+            echo "Running staging.yaml for tag: $tag_name"
+            
+          else
+            echo "Tag format not recognized, skipping deployment."
+          fi
