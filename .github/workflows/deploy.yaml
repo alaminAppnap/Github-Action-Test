@@ -1,4 +1,4 @@
-name: Application Deployment
+name: Deployment Dispatcher
 
 on:
   push:
@@ -14,11 +14,15 @@ jobs:
         run: |
           tag_name="${{ github.ref }}"
           if [[ $tag_name =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Running production.yaml for tag: $tag_name"
-           
+            echo "Triggering production workflow for tag: $tag_name"
+            workflow_dispatch:
+              inputs:
+                workflow: production.yaml
           elif [[ $tag_name =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+-RC\.[0-9]+$ ]]; then
-            echo "Running staging.yaml for tag: $tag_name"
-            
+            echo "Triggering staging workflow for tag: $tag_name"
+            workflow_dispatch:
+              inputs:
+                workflow: staging.yaml
           else
             echo "Tag format not recognized, skipping deployment."
-          fi
+            exit 78  # Exit with a neutral status code (78) to indicate skipping
