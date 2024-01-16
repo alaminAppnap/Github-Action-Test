@@ -3,8 +3,6 @@ on:
   push:
     tags:
       - "v*.*.*-RC.*"
-    branches-ignore:
-      - 'v*.*.*'
 
 jobs:
   build:
