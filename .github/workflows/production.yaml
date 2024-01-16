@@ -1,8 +1,8 @@
 name: Production application
-on:
-  push:
-    tags:
-      - "v*.*.*!-RC"
+# on:
+#   push:
+#     tags:
+#       - "v*.*.*!-RC"
 jobs:
   build:
     name: Deployment process
