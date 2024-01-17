@@ -6,11 +6,9 @@ on:
 
 jobs:
   build:
-    name: Deployment process
+    name: Staging Deployment process
     runs-on: ubuntu-latest
     steps:
       - name: Execute deployment
         run: |
-          # Staging deployment steps
           echo "Deploying to stagingg..."
-          # Add your staging deployment steps here
