@@ -2,7 +2,8 @@ name: staging application
 on:
   push:
     tags:
-      - "v*.*.*-RC.*"
+      -  'v[0-9]+.[0-9]+.[0-9]+-RC.[0-9]+'
+      # - "v*.*.*-RC.*"
 
 jobs:
   build:
