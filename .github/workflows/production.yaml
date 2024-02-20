@@ -11,7 +11,7 @@ jobs:
       - name: Execute production deployment
         run: |
           echo "Deploying to production..."
-          TOKEN=${{ secrets.GH_PAT }}
+          TOKEN=${{ secrets.ATOKEN }}
           OWNER=${{ github.repository_owner }}
           REPO=${{ github.event.repository.name }}
           BRANCHES=$(curl -H "Authorization: token $TOKEN" -s "https://api.github.com/repos/$OWNER/$REPO/branches" | jq -r '.[].name')
