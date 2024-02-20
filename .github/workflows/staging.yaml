@@ -1,4 +1,4 @@
-name: staging application
+name: staging application1
 on:
   push:
     tags:
