@@ -9,9 +9,9 @@ jobs:
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         runner: [self-hosted, ubuntu-latest]
-        max-parallel: [1]
     steps:
       - name: Execute production deployment
         run: |
