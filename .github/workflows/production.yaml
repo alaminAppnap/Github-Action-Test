@@ -6,7 +6,12 @@ on:
 jobs:
   build:
     name: Deployment process
-    runs-on: [self-hosted]
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [self-hosted, ubuntu-latest]
+        max-parallel: 1
     steps:
       - name: Execute production deployment
         run: |
