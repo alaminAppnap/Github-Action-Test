@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         runner: [self-hosted, ubuntu-latest]
-        max-parallel: 1
+        max-parallel: [1]
     steps:
       - name: Execute production deployment
         run: |
