@@ -1,1 +1,35 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
 
+jobs:
+  build:
+    name: Production build process
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Actions
+        uses: actions/checkout@v3
+
+  deploy:
+    name: Production deploy process
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/backend-api-task
+            make pull
+            make stop
+            make start
+            make down
+            make migrate
+            make optimize
+            make up
